@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head charset="UTF-8">
+        <title>Psychic Game</title>
+    </head>
+
+    <script>
+        var alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+        var wins = 0;
+        var losses = 0;
+        var guesses = 8;
+        var compChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
+        var userChoice;
+        var userHistory;
+        
+        console.log(compChoice)
+
+        document.onkeypress = function(event) {
+            userChoice = event.key;
+
+            if (userChoice === compChoice) {
+                wins++;
+            }
+                else {
+                    guesses--;
+                }
+            
+            if (guesses === 0) {
+                losses++;
+                guesses = 8;
+            }
+
+            // used to determine if the JavaScript portion actually worked or not...
+            console.log(wins);
+            console.log(losses);
+            console.log(guesses);
+
+        }
+
+    </script>
+
+    <!-- This part is here do to a weird bug I couldn't figure out :< -->
+    <body> 
+        <h1>The Psychic Game</h1>
+        <h3>Guess what letter I'm thinking of... </h3>
+        <h3>Wins: <script type="text/javascript"> document.write(wins)</script>
+        </h3>
+        <h3>Losses: <script type="text/javascript"> document.write(losses)</script></h3>
+        <h3>Guesses left: <script type="text/javascript"> document.write(guesses)</script></h3>
+
+        <!-- Purpose of line 51 is to output the user guess history -->
+        <h3>Your guesses so far: <script type="text/javascript"> document.write(userHistory)</script></h3> 
+    </body>
+
+</html>
